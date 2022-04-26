@@ -69,7 +69,7 @@ if (true) {
     console.log(instructor); // The flash 
     console.log(pm); // Reverse Flash 
 }
-console.log(instructor); // tony 
+console.log(instructor); // The flash
 console.log(pm); // frnaco
 ```
 ### Coerción de Datos

@@ -2,19 +2,16 @@
 
 function BinarioADecimal(num) {
 
-  let fun = numb => Number(numb);
-  let arr = Array.from(String(num), fun);
-  let arr1 = arr.reverse();
+  let arr = num.split('').reverse()
   let arr2 = []
-  for (let i = 0; i < arr1.length; i++) {
-    arr2.push(Math.pow(2, i) * arr1[i]) 
+  for (let i = 0; i < arr.length; i++) {
+    arr2.push(Math.pow(2, i) * arr[i]) 
   }
 
   //sumando los valores del array
   let result1 = arr2.reduce((acumulador,numero) =>{
         return acumulador + numero
   },0);
-
 
   return result1
 }

@@ -138,7 +138,7 @@ getFood(false); // undefined
 ¿Cuál es el output o salida en consola luego de ejecutar esté código? Explicar por qué:
 
 ```javascript
-var fullname = 'Juan Perez';
+var fullname = 'Juan Perez';   
 var obj = {
    fullname: 'Natalia Nerea',
    prop: {

@@ -10,8 +10,19 @@
 // remove():   Head --> null y devuelve 1
 // search: Busca un valor dentro de la lista. Puede recibir un valor o una función. Si no hubiera resultados, devuelve null.
 
-function LinkedList() {
+class LinkedList {
+    constructor(){
+      this.xlist = {};
+    }
+    add(){
 
+    };
+    remove(){
+
+    };
+    search(){
+
+    };
 }
 
 function Node(value){

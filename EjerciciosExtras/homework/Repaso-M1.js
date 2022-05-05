@@ -14,8 +14,12 @@ const {
 // Pista: utilizar el método Array.isArray() para determinar si algun elemento de array es un array anidado
 // [Para más información del método: https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/isArray]
 
-var countArray = function(array) {
+let countArray = function(array) {
     // Tu código aca:
+    let Narr = array.flat(Infinity)
+    return Narr.reduce((numero,acumulador) =>{
+        return acumulador = numero + acumulador
+    },0);
     
 }
 
@@ -37,12 +41,16 @@ var countArray = function(array) {
 // dentro de a tenemos 3 propiedades mas, luego a3 tiene otras 3 y por ultimo c tiene una extra.
 // Propiedades: a, a1, a2, a3, f, a, c, o, b, c --> 10 en total
 
-var countProps = function(obj) {
+let countProps = function(obj) {
     // Tu código aca:
-
+    let total = Object.keys(obj).length; 
+    for (const property in obj) {
+        if( typeof obj[property] === 'object' && !Array.isArray(obj[property])){
+            total += countProps(obj[property])
+        }
+    }
+    return total
 }
-
-
 // Implementar el método changeNotNumbers dentro del prototype de LinkedList que deberá cambiar
 // aquellos valores que no puedan castearse a numeros por 'Kiricocho' y devolver la cantidad de cambios que hizo
 // Aclaracion: si el valor del nodo puede castearse a número NO hay que reemplazarlo
@@ -52,8 +60,17 @@ var countProps = function(obj) {
 //    Ahora la lista quedaría: Head --> [1] --> ['2'] --> [false] --> ['Kirikocho] y la función debería haber devuelto el valor 1
 
 LinkedList.prototype.changeNotNumbers = function(){
-    // Tu código aca:
+    count = 0
+    let current = this.head
+    while(current){
+        if(Number.isNaN(Number(current.value))){
+            current.value = 'Kiricocho'
+            count ++
+        }
+        current = current.next
+    }
 
+    return count
 }
 
 
@@ -67,7 +84,19 @@ LinkedList.prototype.changeNotNumbers = function(){
 
 var mergeQueues = function(queueOne, queueTwo) {
     // Tu código aca:
+    let nuevaQ = new Queue()
 
+    while (queueOne.size() && queueTwo.size()) {
+        nuevaQ.enqueue(queueOne.dequeue())
+        nuevaQ.enqueue(queueTwo.dequeue())
+    }
+    while(queueOne.size()){
+        nuevaQ.enqueue(queueOne.dequeue());
+    }
+    while(queueTwo.size()){
+        nuevaQ.enqueue(queueTwo.dequeue());
+    }
+    return nuevaQ
 }
 
 
@@ -82,6 +111,9 @@ var mergeQueues = function(queueOne, queueTwo) {
 
 var closureMult = function(multiplier) {
     // Tu código aca:
+    return (num) => {
+        return num * multiplier
+    }
 
 }
 
@@ -89,6 +121,12 @@ var closureMult = function(multiplier) {
 // que debe retornar la suma total de los valores dentro de cada nodo del arbol
 BinarySearchTree.prototype.sum = function() {
     // Tu código aca:
+    let suma = this.value
+    
+    if(this.left) suma += this.left.sum();
+    if(this.right) suma += this.right.sum();
+
+    return suma 
 
 }
 
